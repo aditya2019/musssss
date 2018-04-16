@@ -1,0 +1,23 @@
+
+/*-- heading font color -- */
+.nav-link{
+	color: black;
+	font-size: 1rem;
+}
+/*-- heading logo color -- */
+.navbar-brand{
+	font-size: 1.5rem;
+	text-transform:uppercase;
+	font-weight:bold;
+  font-family: "Times New Roman", Times, serif;
+}
+
+/*-- heading items heading color -- */
+.nav-icon{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.nav-icon:hover{
+	background-color:black;
+}
