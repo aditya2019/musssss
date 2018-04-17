@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
@@ -15,6 +16,7 @@ import { WeeklyTopComponent } from './components/weekly-top/weekly-top.component
 import { MostViewComponent } from './components/most-view/most-view.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MymusicComponent } from './components/mymusic/mymusic.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +31,15 @@ import { MymusicComponent } from './components/mymusic/mymusic.component';
     TopRatedComponent,
     WeeklyTopComponent,
     MostViewComponent,
-    MymusicComponent
+    MymusicComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

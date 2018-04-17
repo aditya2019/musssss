@@ -1,3 +1,32 @@
-<p>
-  song-card works!
-</p>
+<div class="container">
+<div class="col-md-7">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let song of songs">
+              <div class="card" >
+                <img class="img-fluid" [attr.src]="ImagePathget+song.image_path" alt="Card image cap">
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <strong>
+                  {{song.songname}}
+                </strong>
+                  <p>
+                  <span class="text-align-right"><strong> Ratring</strong>&nbsp;
+                 {{song.rating}} -
+                  <i class="fa fa-star"></i></span>
+                </p></h6>
+                  <!-- <p class="card-text"><i class="fas fa-map-marker-alt"></i>  {{song.musicdirector}}</p>
+                  <p class="card-text">Musicdirector: {{song.musicdirector}}</p>
+                  <p class="card-text">SongType: <i class="fas fa-rupee-sign"></i> {{song.type}}</p> -->
+                  <a href="#" class="btn btn-primary">Add</a>
+                  <a href="#" class="btn btn-primary">Details</a>
+                </div>
+
+                <audio controls controlsList="nodownload">
+               <source [attr.src]="SongPathget+song.song_path" type="audio/mpeg">
+.              </audio>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

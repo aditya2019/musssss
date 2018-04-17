@@ -112,20 +112,20 @@ public class SongController {
 
 	// .........get image Api
 
-	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = MediaType.ALL_VALUE)
+	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
 	public ResponseEntity<byte[]> getImage(@PathVariable("id") String id) throws IOException {
 		System.out.println(id);
 		ClassPathResource imgFile = new ClassPathResource("images/" + id + ".jpg");
 		byte[] bytes = StreamUtils.copyToByteArray(imgFile.getInputStream());
 
-		return ResponseEntity.ok().contentType(MediaType.ALL).body(bytes);
+		return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
 
 	}
 	// //........Close get image
 
 	// ......... api to play the song all proyog
-	@RequestMapping(value = "/playsong", method = RequestMethod.GET, produces = MediaType.ALL_VALUE)
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@RequestMapping(value = "/playsong/{id}", method = RequestMethod.GET, produces = MediaType.ALL_VALUE)
+	public void doGet(HttpServletRequest request, HttpServletResponse response,@PathVariable("id") String id) throws ServletException, IOException {
 		System.out.println("Request fot mp3");
 
 		// String fileName = (String) request.getParameter("file");
@@ -134,7 +134,7 @@ public class SongController {
 		// "Invalid or non-existent file parameter in SendMp3 servlet.");
 		//
 		// if (fileName.indexOf(".mp3") == -1)
-		String fileName = "apna" + ".mp3";
+		String fileName =  id + ".mp3";
 		//
 		// String mp3Dir = getServletContext().getInitParameter("mp3-dir");
 		// if (mp3Dir == null || mp3Dir.equals(""))
