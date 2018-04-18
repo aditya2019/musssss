@@ -11,6 +11,8 @@ import { AppConfig }from '../../config/config.constant';
 export class TopRatedComponent implements OnInit {
 
   public topsong: any=[];
+  public flag ='songlist';
+
   public ImagePathget=AppConfig.urlImgget;
   public SongPathget=AppConfig.urlsongget;
   constructor(private songApiService: SongApiService,private router: Router) { }

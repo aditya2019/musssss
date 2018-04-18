@@ -25,4 +25,18 @@ getAllSong()
   private handleError(error: Response){
     return Observable.throw(error);
   }
+  updateMymusic(putsong)
+  {
+    return this.http.post(AppConfig.mymusicdb,putsong, {headers: this.headers})
+  	.map(data => data.json(),
+  		(error: any)=>this.handleError(error));
+  }
+  //mymusic get all song
+  getAllMySong()
+  {
+    return this.http.get(AppConfig.getAllMymusic)
+    .map(data => data.json(),
+      (error: any)=>this.handleError(error));
+  }
+
 }

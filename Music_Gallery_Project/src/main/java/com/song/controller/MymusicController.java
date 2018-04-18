@@ -2,6 +2,7 @@ package com.song.controller;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -39,13 +40,6 @@ public class MymusicController {
 	public ResponseEntity<Void> create(@RequestBody Mymusic mymusic) {
 		 try {
 			 mymusicrepository.save(mymusic);
-			// MongoOperations mongoOperations = getMongoConnection();
-
-//		        Object k2 =  mymusicrepository.findMymusicByObjectId();
-//
-//		        System.out.println(k2.toString());
-
-		      //  return students;
 		  return ResponseEntity.noContent().build();
 		 } catch (Exception e) {
 		  return ResponseEntity.status(HttpStatus.CONFLICT).build();
@@ -63,9 +57,9 @@ public class MymusicController {
 		}
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.DELETE,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public  ResponseEntity<Void> delete(@PathVariable Integer id){
+    public  ResponseEntity<Void> delete(@PathVariable ObjectId id){
       try {
-    	  mymusicrepository.deleteById(id);
+    	  mymusicrepository.deleteOneById(id);
      return ResponseEntity.noContent().build();
       }
       catch (Exception e) {

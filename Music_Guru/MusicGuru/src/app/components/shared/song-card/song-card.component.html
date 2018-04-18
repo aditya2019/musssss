@@ -1,7 +1,8 @@
 <div class="container">
-<div class="col-md-7">
+<div class="col-md-11 col-sm-11">
         <div class="row">
-          <div class="col-md-4" *ngFor="let song of songs">
+          <div class="col-md-3 col-sm-3" *ngFor="let song of songs">
+        <!-- card -->
               <div class="card" >
                 <img class="img-fluid" [attr.src]="ImagePathget+song.image_path" alt="Card image cap">
                 <div class="card-body">
@@ -14,11 +15,21 @@
                  {{song.rating}} -
                   <i class="fa fa-star"></i></span>
                 </p></h6>
-                  <!-- <p class="card-text"><i class="fas fa-map-marker-alt"></i>  {{song.musicdirector}}</p>
-                  <p class="card-text">Musicdirector: {{song.musicdirector}}</p>
-                  <p class="card-text">SongType: <i class="fas fa-rupee-sign"></i> {{song.type}}</p> -->
-                  <a href="#" class="btn btn-primary">Add</a>
-                  <a href="#" class="btn btn-primary">Details</a>
+
+        <div *ngIf="flag === 'mysong'">
+                  <a  class="btn btn-primary btn-hide " >Delete</a>
+                  <button  #modalBtn type="button" class="btn btn-primary btn-hide" (click)="setSong(song)" data-toggle="modal" data-target="#movieModal">
+                  Details
+                 </button>
+        </div>
+        <div *ngIf="flag === 'songlist'">
+                  <a  class="btn btn-primary btn-hide " (click)="addToMymusic(song)">Add</a>
+                  <button  #modalBtn type="button" class="btn btn-primary btn-hide" (click)="setSong(song)" data-toggle="modal" data-target="#movieModal">
+                  Details
+                 </button>
+        </div>
+
+
                 </div>
 
                 <audio controls controlsList="nodownload">
@@ -26,7 +37,46 @@
 .              </audio>
 
               </div>
+              <!-- card close -->
             </div>
           </div>
         </div>
       </div>
+  <!-- Button trigger modal -->
+
+  <!-- Modal -->
+
+      <div class="modal fade" id="movieModal" tabindex="-1" role="dialog" aria-labelledby="movieModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="modal-title modifyheading" id="movieModalLabel"><strong>Song Details</strong></p>
+            </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-5 col-sm-5">
+                <img class="img-fluid" [attr.src]="ImagePathget+currentsong.image_path" alt="Card image cap">
+              </div>
+             <div class="col-md-7 col-sm-7">
+            <div class="modal-body" >
+              <p class="card-text heading"><strong>Song Name-:&nbsp;</strong>{{currentsong.songname}}</p>
+              <p class="card-text heading"><strong>Singer Name-:&nbsp;</strong>{{currentsong.singername}}</p>
+              <p class="card-text heading"><strong>Director-:&nbsp;</strong>{{currentsong.musicdirector}}</p>
+              <p class="card-text heading"><strong>Rating-:&nbsp;</strong>{{currentsong.rating}}&nbsp;<i class="fa fa-star"></i></p>
+              <p class="card-text heading"><strong>Language -:&nbsp;</strong>{{currentsong.language}}</p>
+              <p class="card-text heading"><strong>Year:&nbsp;</strong>{{currentsong.year}}</p>
+              <p class="card-text heading"><strong>Duration:&nbsp;</strong>{{currentsong.duration}}</p>
+              <p class="card-text heading"><strong>Type:&nbsp;</strong>{{currentsong.type}}</p>
+            </div>
+          </div>
+          </div>
+        </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary"  data-dismiss="modal" aria-label="Close">
+                Back
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal ends here -->

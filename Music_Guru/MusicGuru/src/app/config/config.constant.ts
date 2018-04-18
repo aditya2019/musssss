@@ -6,4 +6,7 @@ export class AppConfig{
  public static  urlsongget= "http://192.168.1.129:8095/musicguru/playsong/";
   public static uploadSongUrl = "http://localhost:8095/musicguru/songs";
  public static getAll = "http://localhost:8095/musicguru/all";
+ 
+ public static mymusicdb="http://localhost:8095/mymusic/postsong";
+ public static getAllMymusic="http://localhost:8095/mymusic/all";
 }
